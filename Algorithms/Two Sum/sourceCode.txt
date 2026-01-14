@@ -1,0 +1,7 @@
+class Solution(object):
+    def twoSum(self, nums, target):
+        for firstNumber in range(0, len(nums)):
+            #The offset on the initial iterated value prevents the same value being selected twice
+            for secondNumber in range(firstNumber+1, len(nums)):
+                if nums[firstNumber] + nums[secondNumber] == target:
+                    return([firstNumber, secondNumber])

@@ -1,0 +1,13 @@
+class Solution(object):
+    def isPalindrome(self, x):
+        stringNumber = str(x)
+        #Returns the value of one half of the string, so that values on either side of the median can be
+        halfSize = (len(stringNumber)//2)
+        palindrome = True
+        
+        for i in range (0, halfSize+1):
+            if stringNumber[i] != stringNumber [(-1 - i)]:
+               palindrome = False
+        return(palindrome)
+
+        
