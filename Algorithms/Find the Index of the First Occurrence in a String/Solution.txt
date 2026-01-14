@@ -1,0 +1,14 @@
+class Solution(object):
+    def strStr(self, haystack, needle):
+        for whole in range(0, len(haystack)-len(needle)+1):
+            valid = True
+            cursor = 0
+            while valid:
+                if haystack[whole+cursor] == needle[cursor]:
+                    cursor += 1
+                    if cursor == len(needle):
+                        return(whole)
+                else:
+                    valid = False
+        return(-1)
+                
