@@ -1,0 +1,41 @@
+class Solution(object):
+
+    def isValidSudoku(self, board):
+            checkSum = True
+        
+            for x in range(0, 9):
+                takenValues = []
+                for y in range(0, 9):
+                  currentValue = board[y][x]
+                  if currentValue != ".":
+                     if currentValue not in takenValues:
+                         takenValues.append(currentValue)
+                     else:
+                         checkSum = False
+            for y in range(0, 9):
+                 takenValues = []
+                 for x in range(0, 9):
+                  currentValue = board[y][x]
+                  if currentValue != ".":
+                     if currentValue not in takenValues:
+                         takenValues.append(currentValue)
+                     else:
+                         checkSum = False
+            for xSquare in range(0, 3):
+                for ySquare in range(0, 3):
+                    centreX = (3*xSquare +1)
+                    centreY = (3*ySquare +1)
+
+                    takenValues = []
+                    for xOffset in range(-1, 2):
+                         for yOffset in range(-1, 2):
+                          currentValue = board[centreY + yOffset][centreX + xOffset]
+                          if currentValue != ".":
+                           if currentValue not in takenValues:
+                              takenValues.append(currentValue)
+                           else:
+                              checkSum = False
+                
+            return (checkSum)
+            
+        
