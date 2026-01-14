@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        bool unsolved = true;
+        vector<int> finalAnswer = {0, 0};
+        while (unsolved){
+            for (int firstNumber = 0; firstNumber < nums.size(); firstNumber++){
+            //Ensures we don't include impossible values
+            if (nums[firstNumber] <= target){
+                //Ensures we don't do redundant comparisons that have already been performed.
+                for (int secondNumber = firstNumber+1; secondNumber < nums.size(); secondNumber++){
+                    if (nums[firstNumber] + nums[secondNumber] == target){
+                        finalAnswer = {firstNumber, secondNumber};
+                        unsolved = false;
+                    }
+                }
+            }
+        }
+        }
+        return finalAnswer;
+    }
+};
