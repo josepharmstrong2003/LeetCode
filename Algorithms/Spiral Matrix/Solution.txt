@@ -1,0 +1,55 @@
+class Solution:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        
+        xDim = len(matrix[0])
+        yDim = len(matrix)
+
+        xMin = 0 
+        xMax = xDim-1
+        yMin = 0
+        yMax = yDim-1
+        x = 0
+        y = 0
+        if xMax != 0:
+            direction = "Right"
+        else:
+            direction = "Down"
+        listOfVals = []
+        for i in range(1, xDim*yDim+1):
+            print(listOfVals)
+            listOfVals.append(matrix[y][x])
+            
+          
+            if direction == "Right":
+                
+                
+                x = x + 1 
+                if x == xMax:
+                    
+                    yMin += 1
+                    direction = "Down"
+
+            elif direction == "Down":
+                
+                y = y + 1 
+                if y == yMax:
+                    xMax -= 1
+                    direction = "Left"
+            elif direction == "Left":
+                
+                x = x - 1 
+                if x == xMin:
+                    yMax -= 1
+                    direction = "Up"
+            elif direction == "Up":
+                
+                y = y - 1 
+                if y == yMin:
+                    xMin += 1
+                    direction = "Right"
+            
+        return(listOfVals)
+
+            
+
+        
