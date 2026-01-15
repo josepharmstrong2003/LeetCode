@@ -1,0 +1,49 @@
+def findGoodSolution(removableBarsX, removableBarsY):
+    #As we only need the lowest of the two values, we should stop processing as soon as we find it
+    #To do this, we need to sort the smallest list first, and then return the maximum length from that
+    #In case the second value ends up being smaller, we sort that one first, but if it ends up being 
+    #shorter, or has the same length as the previous one, then we proceed
+    removableBarsX.insert(0,1)
+    removableBarsY.insert(0,1)
+    removableBarsX.sort()
+    removableBarsY.sort()
+    if len(removableBarsX) < len(removableBarsY):
+        firstToResolve = removableBarsX
+        secondToResolve = removableBarsY
+    else:
+        firstToResolve = removableBarsY
+        secondToResolve = removableBarsX
+
+    maxFirstValueFound = 2
+    currentMax = 1
+    for i in range(0, len(firstToResolve)-1):
+           if firstToResolve[i+1] - firstToResolve[i] == 1:
+                currentMax = currentMax + 1
+                if maxFirstValueFound < currentMax:
+                     maxFirstValueFound = currentMax
+           else:
+                currentMax = 2
+    
+    maxSecondValueFound = 2
+    currentMax = 1
+    for i in range(0, len(secondToResolve)-1):
+           if secondToResolve[i+1] - secondToResolve[i] == 1:
+                currentMax = currentMax + 1
+                if maxSecondValueFound < currentMax:
+                     maxSecondValueFound = currentMax
+           else:
+                currentMax = 2
+           #Breaks if the first value is beaten by the second. Messy but it works.
+           if maxSecondValueFound >= maxFirstValueFound:
+                return(maxFirstValueFound*maxFirstValueFound)
+           
+    return(maxSecondValueFound*maxSecondValueFound)
+
+    
+
+
+class Solution:
+    def maximizeSquareHoleArea(self, n: int, m: int, hBars: List[int], vBars: List[int]) -> int:
+        return(findGoodSolution(hBars, vBars))
+        
+        
