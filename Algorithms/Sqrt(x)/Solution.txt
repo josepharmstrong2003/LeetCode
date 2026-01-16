@@ -1,0 +1,18 @@
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        maxValue = 2147483648/2
+        binaryTest = maxValue/2
+        offset = maxValue/4
+        solving = True
+        while solving:
+            if binaryTest*binaryTest == x or ((binaryTest+1)*(binaryTest+1) > x and binaryTest*binaryTest < x) :
+                return(int(binaryTest))
+            elif binaryTest*binaryTest > x:
+                binaryTest = binaryTest - offset
+            else:
+                binaryTest = binaryTest + offset                
+            offset = offset/2
+            
+
+
+        
